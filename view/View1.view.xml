@@ -1,32 +1,98 @@
 <mvc:View controllerName="sample.project1.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    	xmlns:core="sap.ui.core">
+    	xmlns:core="sap.ui.core"
+        xmlns:f="sap.ui.layout.form">
     
     <Page id="page" title="{i18n>title}"  >
 
-    <Label text="{i18n>Labelname}"></Label>
-    <Input placeholder="Enter your name "></Input>
-    <Label text="{i18n>Labellocation}"></Label>
-    <Input 
-    
-        type="Text" 
-
-        showSuggestion="true">
-        	<suggestionItems>
-				<core:Item text="INDIA" />
-                <core:Item text="INDONESIA" />
-                <core:Item text="PAKISTAN" />
-                <core:Item text="GERMANY" />
-                <core:Item text="USA" />
-			</suggestionItems>
-
-     </Input>
-    <Label text="{i18n>Labelage}"></Label>
-    <Input placeholder="Enter your age"></Input>
     
 
-   
-    <Button id="b1" type="Default" text="{i18n>submit}" press="onPress">  </Button>
+
+<f:SimpleForm id="SimpleFormDisplay354"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Name" />
+                 <Input value="{manifestModel>/name}"
+                 description="Hello {manifestModel>/name}"
+                 ></Input>
+				
+				<Label text="Street/No." />
+				<Input value="{manifestModel>/StreetNo}" />
+				<Label text="ZIP Code/City" />
+				<Input value="{manifestModel>/ZIPCodeCity}" />
+				<Label text="Country" />
+				<Input value="{manifestModel>/Country}" />
+			</f:content>
+		</f:SimpleForm>
+             <Button text="Add to Table" press="onAddToTable" />
+<Button text="Add to List" press="onAddToList" />
+
+
+
+    	<Table
+		items="{
+			path: 'manifestModel>/Addressinfo',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title text="TABLE" level="H2"/>
+				<ToolbarSpacer/>
+				<CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/>
+				<Button text="Open Dialog" press="onOpenPressed"/>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Name" />
+			</Column>
+			<Column>
+				<Text text="Street No" />
+			</Column>
+			<Column>
+				<Text text="ZIP Code/City" />
+			</Column>
+            <Column >
+            <Text text="Country"></Text>
+            </Column>
+
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" type="Navigation">
+				<cells>
+					<Text text="{manifestModel>name}" 
+                    wrapping="false" />
+                    <Text text="{manifestModel>StreetNo}"
+                     wrapping="false" />
+                    <Text text="{manifestModel>ZIPCodeCity}"
+                     wrapping="false" />
+                    <Text text="{manifestModel>Country}"
+                     />
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+<List
+    headerText="Address List"
+    headerLevel="H2"
+    items="{manifestModel>/Listinfo}">
+
+    <StandardListItem
+        title="{manifestModel>name}"
+        description="{manifestModel>StreetNo}, {manifestModel>ZIPCodeCity}"
+        info="{manifestModel>Country}" />
+</List>
+
+
+
     </Page>
 </mvc:View>

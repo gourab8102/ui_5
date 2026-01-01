@@ -51,7 +51,15 @@
         "settings": {
           "bundleName": "sample.project1.i18n.i18n"
         }
+      },
+       "manifestModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/data.json" 
+        
+
+
       }
+
     },
     "resources": {
       "css": [

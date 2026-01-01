@@ -1,0 +1,32 @@
+<mvc:View controllerName="sample.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    	xmlns:core="sap.ui.core">
+    
+    <Page id="page" title="{i18n>title}"  >
+
+    <Label text="{i18n>Labelname}"></Label>
+    <Input placeholder="Enter your name "></Input>
+    <Label text="{i18n>Labellocation}"></Label>
+    <Input 
+    
+        type="Text" 
+
+        showSuggestion="true">
+        	<suggestionItems>
+				<core:Item text="INDIA" />
+                <core:Item text="INDONESIA" />
+                <core:Item text="PAKISTAN" />
+                <core:Item text="GERMANY" />
+                <core:Item text="USA" />
+			</suggestionItems>
+
+     </Input>
+    <Label text="{i18n>Labelage}"></Label>
+    <Input placeholder="Enter your age"></Input>
+    
+
+   
+    <Button id="b1" type="Default" text="{i18n>submit}" press="onPress">  </Button>
+    </Page>
+</mvc:View>

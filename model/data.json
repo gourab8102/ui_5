@@ -1,18 +1,24 @@
+
+
+
 {
+
+
+
   "Addressinfo": [
     {
-      "name": "joey",
+      "name": "Mobile",
       "StreetNo": "APC RAY",
       "ZIPCodeCity": "743127",
-      "Country": "india"
+      "Status": "P"
     }
   ],
   "Listinfo": [
     {
-      "name": "joey",
+      "name": "Mobile",
       "StreetNo": "APC RAY",
       "ZIPCodeCity": "743127",
-      "Country": "india"
+      "Status": "P"
     }
   ]
 }

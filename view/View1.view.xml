@@ -2,13 +2,17 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     	xmlns:core="sap.ui.core"
-        xmlns:f="sap.ui.layout.form">
+        xmlns:f="sap.ui.layout.form"
+		core:require="{ formatter: 'sample/project1/model/formatter' }"
+>
     
     <Page id="page" title="{i18n>title}"  >
+	  <VBox
+        width="100%"
+        alignItems="Center"
+        justifyContent="Start">
 
-    
-
-
+		
 <f:SimpleForm id="SimpleFormDisplay354"
 			editable="false"
 			layout="ResponsiveGridLayout"
@@ -17,19 +21,25 @@
 			singleContainerFullSize="false" >
 			<f:content>
 				<Label text="Name" />
-                 <Input value="{manifestModel>/name}"
-                 description="Hello {manifestModel>/name}"
-                 ></Input>
+                <Input
+    id="nameInput"
+    value="{manifestModel>/name}"
+    showValueHelp="true"
+    valueHelpRequest="onOpenValueHelp"
+/>
+
 				
 				<Label text="Street/No." />
 				<Input value="{manifestModel>/StreetNo}" />
 				<Label text="ZIP Code/City" />
 				<Input value="{manifestModel>/ZIPCodeCity}" />
-				<Label text="Country" />
-				<Input value="{manifestModel>/Country}" />
+				<Label text="Status" />
+				<Input value="{manifestModel>/Status}" />
+				
 			</f:content>
 		</f:SimpleForm>
-             <Button text="Add to Table" press="onAddToTable" />
+
+<Button text="Add to Table" press="onAddToTable" />
 <Button text="Add to List" press="onAddToList" />
 
 
@@ -43,7 +53,7 @@
 		}">
 		<headerToolbar>
 			<OverflowToolbar>
-				<Title text="TABLE" level="H2"/>
+				<Title text="ADDRESS TABLE" level="H2"/>
 				<ToolbarSpacer/>
 				<CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/>
 				<Button text="Open Dialog" press="onOpenPressed"/>
@@ -60,12 +70,14 @@
 				<Text text="ZIP Code/City" />
 			</Column>
             <Column >
-            <Text text="Country"></Text>
+            <Text text="Status"></Text>
             </Column>
 
 		</columns>
 		<items>
 			<ColumnListItem vAlign="Middle" type="Navigation">
+			
+
 				<cells>
 					<Text text="{manifestModel>name}" 
                     wrapping="false" />
@@ -73,8 +85,17 @@
                      wrapping="false" />
                     <Text text="{manifestModel>ZIPCodeCity}"
                      wrapping="false" />
-                    <Text text="{manifestModel>Country}"
-                     />
+                    <!-- <Text text="{manifestModel>Status}"
+                     /> -->
+					 <Text 
+					 text="{
+					 parts:[ 
+					 
+					 {path:'manifestModel>Status'},
+					 { path:'manifestModel>name'}],
+					 		
+					 formatter : 'formatter.statusChange' }"
+					 ></Text>
 					
 				</cells>
 			</ColumnListItem>
@@ -88,9 +109,16 @@
 
     <StandardListItem
         title="{manifestModel>name}"
-        description="{manifestModel>StreetNo}, {manifestModel>ZIPCodeCity}"
-        info="{manifestModel>Country}" />
+        description="{manifestModel>StreetNo},{manifestModel>ZIPCodeCity},{manifestModel>Status}"
+         />
 </List>
+
+
+	
+       
+
+    </VBox>
+    
 
 
 

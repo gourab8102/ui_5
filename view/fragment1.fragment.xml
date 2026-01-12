@@ -19,7 +19,7 @@
         </content>
 
         <beginButton>
-            <Button text="OK" press="onConfirmValueHelp"/>
+            <Button text="OK" press="onValueHelpPress"/>
         </beginButton>
 
         <endButton>

@@ -129,16 +129,16 @@ sap.ui.define([
 
         },
 
-        onValueHelpSelect:function (oEvent) {
+        // onValueHelpSelect:function (oEvent) {
 
-            var oItem = oEvent.getParameter("selectedItem");  // takes the selected item in string format
-            if (!oItem) {
-                return;
-            }
+        //     var oItem = oEvent.getParameter("selectedItem");  // takes the selected item in string format
+        //     if (!oItem) {
+        //         return;
+        //     }
 
-            this.byId("name_input").setValue(oItem.getTitle());
+        //     this.byId("name_input").setValue(oItem.getTitle());
 
-        },
+        // },
 
 
 
